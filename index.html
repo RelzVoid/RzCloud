@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RzCloud</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:#fff;
+}
+
+#loading{
+  position:fixed;
+  inset:0;
+  background:#0f2027;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  animation:fadeOut 1s ease forwards;
+  animation-delay:2s;
+}
+@keyframes fadeOut{to{opacity:0;visibility:hidden}}
+
+.loader img{
+  width:120px;
+  animation:glow 1.5s infinite;
+}
+@keyframes glow{
+  0%{filter:drop-shadow(0 0 5px #00ffcc)}
+  50%{filter:drop-shadow(0 0 30px #00ffcc)}
+  100%{filter:drop-shadow(0 0 5px #00ffcc)}
+}
+
+header{
+  text-align:center;
+  padding:30px 20px;
+  background:rgba(0,0,0,.4);
+}
+
+header img{width:90px;border-radius:18px}
+
+.container{
+  max-width:1100px;
+  margin:30px auto;
+  padding:0 20px;
+}
+
+h2{text-align:center;margin:60px 0 25px}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:rgba(255,255,255,.08);
+  padding:20px;
+  border-radius:18px;
+  box-shadow:0 10px 25px rgba(0,0,0,.35);
+  opacity:0;
+  transform:translateY(30px);
+  transition:.6s;
+}
+.card.show{opacity:1;transform:translateY(0)}
+
+.price{
+  font-size:22px;
+  font-weight:bold;
+  color:#00ffcc;
+  animation:priceGlow 2s infinite;
+}
+@keyframes priceGlow{
+  0%{text-shadow:0 0 5px #00ffcc}
+  50%{text-shadow:0 0 20px #00ffcc}
+  100%{text-shadow:0 0 5px #00ffcc}
+}
+
+.section-buy{
+  margin:35px 0 10px;
+  text-align:center;
+}
+
+.buy-btn{
+  display:inline-block;
+  padding:14px 30px;
+  background:#00ffcc;
+  color:#003333;
+  border-radius:18px;
+  font-weight:bold;
+  text-decoration:none;
+  transition:.3s;
+}
+.buy-btn:hover{transform:scale(1.08)}
+
+footer{
+  margin-top:60px;
+  padding:20px;
+  background:rgba(0,0,0,.4);
+  text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<div id="loading">
+  <div class="loader">
+    <img src="logo-rzcloud.png">
+    <p>RzCloud</p>
+  </div>
+</div>
+
+<header>
+  <img src="logo-rzcloud.png">
+  <h1>RzCloud</h1>
+  <p>Customer Service: <b>rzcloudd@gmail.com</b></p>
+</header>
+
+<div class="container">
+
+<!-- REDFINGER -->
+<h2>REDFINGER</h2>
+<div class="products">
+  <div class="card"><h3>VIP 7 Hari</h3><p class="price">Rp 19.200</p></div>
+  <div class="card"><h3>VIP 30 Hari</h3><p class="price">Rp 58.900</p></div>
+  <div class="card"><h3>KVIP 7 Hari</h3><p class="price">Rp 35.500</p></div>
+  <div class="card"><h3>KVIP 30 Hari</h3><p class="price">Rp 101.200</p></div>
+  <div class="card"><h3>SVIP 7 Hari</h3><p class="price">Rp 45.600</p></div>
+  <div class="card"><h3>SVIP 30 Hari</h3><p class="price">Rp 132.900</p></div>
+</div>
+
+<div class="section-buy">
+  <a class="buy-btn" href="https://wa.me/6285124377042?text=Bang%20mau%20beli%20cloud" target="_blank">
+    BELI REDFINGER
+  </a>
+</div>
+
+<!-- VSPHONE -->
+<h2>CLOUD VSPHONE</h2>
+<div class="products">
+  <div class="card"><h3>VIP 1 Hari</h3><p class="price">Rp 3.000</p></div>
+  <div class="card"><h3>VIP 7 Hari</h3><p class="price">Rp 12.000</p></div>
+  <div class="card"><h3>VIP 30 Hari</h3><p class="price">Rp 35.000</p></div>
+  <div class="card"><h3>KVIP 1 Hari</h3><p class="price">Rp 4.000</p></div>
+  <div class="card"><h3>KVIP 7 Hari</h3><p class="price">Rp 14.400</p></div>
+  <div class="card"><h3>KVIP 30 Hari</h3><p class="price">Rp 62.000</p></div>
+</div>
+
+<div class="section-buy">
+  <a class="buy-btn" href="https://wa.me/6285124377042?text=Bang%20mau%20beli%20cloud" target="_blank">
+    BELI VSPHONE
+  </a>
+</div>
+
+</div>
+
+<footer>
+© 2026 RzCloud
+</footer>
+
+<script>
+const cards=document.querySelectorAll('.card');
+const obs=new IntersectionObserver(e=>{
+  e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('show')})
+},{threshold:0.2});
+cards.forEach(c=>obs.observe(c));
+</script>
+
+</body>
+</html>
